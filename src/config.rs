@@ -10,8 +10,10 @@ pub struct ServerConfig {
 #[derive(Deserialize)]
 pub struct Config {
     pub server: ServerConfig,
+    pub pg: deadpool_postgres::Config,
 }
 
+// create a factory to get config from env
 impl Config {
     pub fn from_env() -> Result<Self, ConfigError> {
         let mut cfg = config::Config::new();
