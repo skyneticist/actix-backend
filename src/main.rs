@@ -1,20 +1,20 @@
 mod config;
-mod models;
-mod handlers;
 mod db;
+mod handlers;
+mod models;
 
+use crate::handlers::*;
 use actix_web::{web, App, HttpServer};
 use dotenv::dotenv;
 use std::io;
 use tokio_postgres::NoTls;
-use crate:: handlers::*;
 
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
+    // resolve environment
     dotenv().ok();
 
     let config = crate::config::Config::from_env().unwrap();
-
     let pool = config.pg.create_pool(NoTls).unwrap();
 
     println!(
