@@ -36,8 +36,3 @@ pub async fn get_project(
 
     Ok(project)
 }
-
-#[test]
-fn test_get_projects() {
-    assert_eq!(true, true);
-}
