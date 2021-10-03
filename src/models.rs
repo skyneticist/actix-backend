@@ -20,5 +20,5 @@ pub struct ProjectDetails {
     pub id: i32,
     pub title: String,
     pub in_progress: bool,
-    pub list_id: i32
+    pub project_id: i32
 }

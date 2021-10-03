@@ -17,7 +17,7 @@ pub async fn get_projects(client: &Client) -> Result<Vec<ProjectList>, io::Error
 }
 
 pub async fn get_project(client: &Client, project_id: i32) -> Result<Vec<ProjectDetails>, io::Error> {
-    let sql = client.prepare("select * from project_details where list_id = $1 order by id").await.unwrap();
+    let sql = client.prepare("select * from project_details where project_id = $1 order by id").await.unwrap();
 
     let project = client.query(&sql, &[&project_id])
         .await
