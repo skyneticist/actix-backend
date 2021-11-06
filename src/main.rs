@@ -1,18 +1,11 @@
-mod auth;
 mod config;
 mod db;
-mod errors;
 mod handlers;
 mod models;
 
-// use crate::models::{VideoCategory, VideoCategory::*, YoutubeVid};
-
 use crate::handlers::*;
 use actix_cors::Cors;
-use actix_web::{dev::ServiceRequest, http, web, App, Error, HttpServer};
-use actix_web_httpauth::extractors::bearer::{BearerAuth, Config};
-use actix_web_httpauth::extractors::AuthenticationError;
-use actix_web_httpauth::middleware::HttpAuthentication;
+use actix_web::{http, web, App, HttpServer};
 use dotenv::dotenv;
 use std::io;
 use tokio_postgres::NoTls;
@@ -30,7 +23,6 @@ async fn main() -> io::Result<()> {
     );
 
     HttpServer::new(move || {
-        // let auth = HttpAuthentication::bearer(validator);
         let cors = Cors::default()
             .allowed_origin("http://localhost:3000")
             .allowed_origin_fn(|origin, _req_head| origin.as_bytes().ends_with(b".localhost:3000"))
@@ -61,23 +53,6 @@ async fn main() -> io::Result<()> {
     .run()
     .await
 }
-
-// async fn validator(req: ServiceRequest, credentials: BearerAuth) -> Result<ServiceRequest, Error> {
-//     let config = req
-//         .app_data::<Config>()
-//         .map(|data| data.get_ref().clone())
-//         .unwrap_or_else(Default::default);
-//     match auth::validate_token(credentials.token()) {
-//         Ok(res) => {
-//             if res == true {
-//                 Ok(req)
-//             } else {
-//                 Err(AuthenticationError::from(config).into())
-//             }
-//         }
-//         Err(_) => Err(AuthenticationError::from(config).into()),
-//     }
-// }
 
 #[cfg(test)]
 mod tests {

@@ -61,7 +61,6 @@ pub struct YoutubeVid {
 }
 
 #[derive(Debug, Deserialize, Serialize, Add, Display, From, PartialEq)]
-// #[display(fmt = "{:?}, {}, {}, {}, {}, {}, {}, {}, {}", Electronics, Comedy, Goat, Food, Science, Engineering, Programming, Robotics, Creepy, FeelGood, Dark)]
 pub enum VideoCategory {
     Electronics,
     Comedy,
@@ -74,11 +73,4 @@ pub enum VideoCategory {
     Creepy,
     FeelGood,
     Dark,
-}
-
-impl VideoCategory {
-    pub fn from_variant_to_string(cat: &Self) -> String {
-        let enum_string: String = cat.to_string();
-        return enum_string;
-    }
 }
