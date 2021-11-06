@@ -3,16 +3,23 @@ name = "actix-backend"
 version = "0.1.0"
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 actix = "0.11.0"
-actix-web = "3.3.2"
+actix-cors = "0.5.4"
 actix-rt = "1.1.1"
-serde = { version = "1.0.123", features = ["derive"] }
-dotenv = "0.15.0"
+actix-web = "3.3.2"
+actix-web-httpauth = "0.5.1"
+alcoholic_jwt = "1.0.1"
+chrono = { version = "0.4.10", features = ["serde"] }
 config = "0.11.0"
+deadpool-postgres = "0.5.0"
+derive_more = "0.99.16"
+dotenv = "0.15.0"
+futures = "0.3.17"
+postgres-types = "0.2.2"
+# openssl = "0.10.37"
+reqwest = "0.9.22"
+serde = { version = "1.0.123", features = ["derive"] }
 tokio-pg-mapper = "0.1.4"
 tokio-pg-mapper-derive = "0.1.4"
-deadpool-postgres = "0.5.0"
 tokio-postgres = "0.5.1"
